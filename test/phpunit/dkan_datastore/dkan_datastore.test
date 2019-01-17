@@ -244,7 +244,7 @@ class DkanDatastoreWebTestCase extends DrupalWebTestCase {
   protected function assertDatastoreTable($resource) {
     // See if table exists.
     $r = $this->assertTrue(
-      db_table_exists('dkan_datastore_file_' . $resource->nid),
+      db_table_exists('dkan_datastore_' . $resource->nid),
       "Datastore table exists."
     );
     return $r;
@@ -265,7 +265,7 @@ class DkanDatastoreWebTestCase extends DrupalWebTestCase {
    */
   protected function assertDatastoreTableData($resource, $id, $expected_result) {
     // We're actually going to see if we get a hit for a particular country id.
-    $result = db_select('dkan_datastore_file_' . $resource->nid, 'f')
+    $result = db_select('dkan_datastore_' . $resource->nid, 'f')
       ->fields('f', array('country'))
       ->condition('id', $id)
       ->execute();
