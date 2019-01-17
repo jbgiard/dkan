@@ -136,8 +136,8 @@ class DatastoreContext extends RawDKANContext {
    * Drop a datastore table
    */
   private function dropTable($table_name){
-    $table = data_get_table($table_name);
-    if($table) {
+    $table = DataTable::instance($table_name);
+    if($table->defined()) {
       $table->drop();
     } elseif (db_table_exists($table_name)) {
       db_drop_table($table_name);
