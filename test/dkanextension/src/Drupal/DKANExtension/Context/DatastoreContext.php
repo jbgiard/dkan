@@ -46,7 +46,7 @@ class DatastoreContext extends RawDKANContext {
         $table_name = "dkan_datastore_" . $n->nid;
         $has_file = dkan_datastore_file_field($node);
         $wrapper = entity_metadata_wrapper('node', $node);
-        $status = ($has_file) ? STORAGE_INITIALIZED : STORAGE_UNINITIALIZED;
+        $status = ($has_file) ? 1 : 0;
         $wrapper->field_datastore_status->set($status);
         $wrapper->save();
         $this->dropTable($table_name);
