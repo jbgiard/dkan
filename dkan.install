@@ -814,7 +814,7 @@ function dkan_update_7034() {
 }
 
 /**
- * Remove feeds module tables and clean system table.
+ * Remove feeds module tables. Clean system and variables tables.
  */
 function dkan_update_7035() {
   if (!module_exists('feeds') && !module_exists('feeds_field_fetcher')
@@ -832,20 +832,13 @@ function dkan_update_7035() {
       }
     }
 
-    $records = array(
-      'feeds',
-      'feeds_import',
-      'feeds_news',
-      'feeds_ui',
-      'feeds_tests',
-      'feeds_field_fetcher',
-      'feeds_flatstore_processor'
-    );
-    foreach ($records as $record) {
-      db_delete('system')
-      ->condition('name', $record)
-      ->condition('type', 'module')
-      ->execute();
-    }
+    db_delete('system')
+    ->condition('name', '%feeds%', 'LIKE')
+    ->condition('type', 'module')
+    ->execute();
+
+    db_delete('variable')
+    ->condition('name', '%feed%', 'LIKE')
+    ->execute();
   }
 }
