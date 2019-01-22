@@ -812,33 +812,3 @@ function dkan_update_7034() {
 
   $storage->returnBin($bin);
 }
-
-/**
- * Remove feeds module tables. Clean system and variables tables.
- */
-function dkan_update_7035() {
-  if (!module_exists('feeds') && !module_exists('feeds_field_fetcher')
-    && !module_exists('feeds_flatstore_processor')) {
-    $tables = array(
-      'feeds_importer',
-      'feeds_item',
-      'feeds_log',
-      'feeds_push_subscriptions',
-      'feeds_source',
-    );
-    foreach ($tables as $table) {
-      if (db_table_exists($table)) {
-        db_drop_table($table);
-      }
-    }
-
-    db_delete('system')
-    ->condition('name', '%feeds%', 'LIKE')
-    ->condition('type', 'module')
-    ->execute();
-
-    db_delete('variable')
-    ->condition('name', '%feed%', 'LIKE')
-    ->execute();
-  }
-}
