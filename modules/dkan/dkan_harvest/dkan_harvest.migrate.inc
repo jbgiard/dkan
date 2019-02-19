@@ -687,7 +687,7 @@ class HarvestMigration extends MigrateDKAN {
     // Check if sourceCount is 0.
     // Show and add an error to the message table.
     if ($this->sourceCount() == 0) {
-      $message = t('Items to import is 0. Looks like source is missing. All the content previously harvested will be unpublished.');
+      $message = t('Items to import is 0. Looks like source is missing. No updates will be made at this time.');
       self::displayMessage($message, 'error');
       $this->saveMessage($message);
     }
@@ -713,7 +713,8 @@ class HarvestMigration extends MigrateDKAN {
     // We need the postImportRestoredSource() call to be before the
     // postImportMissingSource() call.
     $this->postImportRestoredSource();
-    $this->postImportMissingSource();
+    // Skip Missing Source operations, we don't want to orphan everything for temporary outages.
+    //$this->postImportMissingSource();
 
     // Restore any rule disabled in the preImport call. This is restored last
     // in the postImport call to make sure any processing done is done while
