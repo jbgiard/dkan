@@ -10,11 +10,11 @@ DKAN is based on the open source </a><a href="https://drupal.org">Drupal</a> con
 
 ### Pantheon
 
-**[Click here](https://dashboard.getpantheon.com/products/dkan/spinup)**  to install DKAN on Pantheon for free.
+**[Click here](https://dashboard.pantheon.io/products/dkan/spinup)**  to install DKAN on Pantheon for free.
 
 Pantheon provides reliable Drupal cloud hosting with a powerful development tools and web-based user interface designed to facilitate and encourage best development practices. With essentially a single click, you can spin up a new DKAN instance on Pantheon and log in to your new site in just a few minutes.
 
-You can register for a free account [here](https://www.getpantheon.com/). Once you have access, create a new [dkan site](https://dashboard.getpantheon.com/products/dkan/spinup):
+You can register for a free account [here](https://www.getpantheon.com/). Once you have access, create a new [dkan site](https://dashboard.pantheon.io/products/dkan/spinup):
 
 ![Pantheon new site form](../images/Pantheon_Dashboard.png)
 
